@@ -2,6 +2,7 @@ package main
 
 import (
 	"free-say/handlers"
+	"free-say/middleware"
 	"free-say/room"
 	"net/http"
 	"time"
@@ -13,6 +14,8 @@ func main() {
 	router := gin.Default()
 
 	go room.DefaultRoom.Run()
+
+	router.Use(middleware.CORSMiddleware())
 
 	v1 := router.Group("/v1")
 	handlers.RegisterApiV1(v1)

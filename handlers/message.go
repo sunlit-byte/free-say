@@ -22,3 +22,8 @@ func SendMessageHandler(c *gin.Context) {
 	}
 	room.SendMessage(conn)
 }
+
+func OnelineUserHandler(c *gin.Context) {
+	userNum := room.GetOnlineUser()
+	response.Success(c, userNum)
+}

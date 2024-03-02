@@ -32,3 +32,17 @@ func (cr *ChatRoom) Run() {
 		}
 	}
 }
+
+func GetOnlineUser() int {
+	count := 0
+	if DefaultRoom.clients == nil {
+		return 0
+	} else {
+		for _, value := range DefaultRoom.clients {
+			if value {
+				count++
+			}
+		}
+	}
+	return count
+}
